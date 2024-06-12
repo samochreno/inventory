@@ -1,0 +1,132 @@
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+    --height-pagination: 2.15rem;
+    --table-padding-x: 1.5rem;
+    --table-padding-y: 0.9rem;
+}
+
+.btn {
+    white-space: nowrap !important;
+    font-weight: 600 !important;
+}
+
+.container-fluid .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+}
+
+.table {
+    margin: 0;
+}
+
+.table th,
+.table td {
+    border: none;
+    padding: var(--table-padding-y) var(--table-padding-x);
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+}
+
+.table td {
+    color: $text-muted;
+}
+
+.table thead {
+    border-bottom: solid 1px $border-color-translucent;
+}
+
+.table tfoot {
+    border-top: solid 1px $border-color-translucent;
+}
+
+.table thead,
+.table tfoot {
+    line-height: var(--height-pagination);
+}
+
+tbody tr:nth-of-type(even) {
+    --bs-table-bg: var(--bs-gray-200) !important;
+}
+
+.table-responsive .table-container {
+    width: fit-content;
+    padding: 0 calc(var(--bs-gutter-x) * 2);
+}
+
+.table-responsive .card {
+    overflow: hidden;
+}
+
+@each $size-name in map-keys($container-max-widths) {
+    $size-value: map-get($container-max-widths , $size-name);
+    
+    .table-responsive .table-container {
+        @include media-breakpoint-up($size-name) {
+            width: fit-content;
+            padding: 0 calc((100% - $size-value) / 2 + var(--bs-gutter-x));
+        }
+    }
+
+    .table-responsive .card {
+        @include media-breakpoint-up($size-name) {
+            min-width: calc($size-value - var(--bs-gutter-x) * 2);
+        }
+    }
+}
+
+.btn-row-display {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-display-btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: end;
+}
+
+.row-edit > * {
+    flex: 1 1 0;
+}
+
+.badge {
+    padding: 5px 7px;
+    font-size: 0.70rem;
+    font-weight: 600;
+}
+
+.pagination {
+    margin: 0;
+    float: right;
+    height: var(--height-pagination);
+}
+
+.pagination li {
+    display: flex;
+}
+
+.pagination li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
